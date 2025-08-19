@@ -3,183 +3,211 @@
 <head>
   <meta charset="UTF-8" />
   <title>Yashika's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
       margin: 0;
-      background-color: #f9f9f9;
-      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
     }
-    header {
-      background: #333;
-      color: white;
-      padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    nav a {
-      color: white;
-      margin-right: 25px;
+    a {
+      color: #e6b400;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
     }
-    nav a:hover {
+    a:hover {
       text-decoration: underline;
     }
-    main {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
+
+    .container {
+      display: flex;
+      min-height: 100vh;
     }
-    h1, h2, h3, h4 {
-      color: #333;
+
+    nav {
+      background-color: #121212;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 20px;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
     }
-    section {
-      margin-bottom: 60px;
+
+    nav h2 {
+      margin: 0 0 30px 0;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #e6b400;
+      letter-spacing: 2px;
     }
-    img {
-      max-width: 300px;
-      border-radius: 8px;
-      margin: 10px 10px 20px 0;
-      vertical-align: middle;
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      flex-grow: 1;
     }
-    iframe {
-      width: 100%;
-      max-width: 560px;
-      height: 315px;
+
+    nav ul li {
       margin-bottom: 20px;
-      border-radius: 8px;
-      border: none;
-      display: block;
     }
-    .project-links a {
+
+    nav ul li a {
+      font-size: 1.1rem;
       display: inline-block;
-      margin-right: 15px;
-      color: #007acc;
-      text-decoration: none;
+      padding: 6px 0;
     }
-    .project-links a:hover {
-      text-decoration: underline;
+
+    nav ul li ul {
+      margin-top: 6px;
+      margin-left: 12px;
     }
-    form label {
+
+    nav ul li ul li {
+      margin-bottom: 12px;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 60px;
+      flex-grow: 1;
+      max-width: 900px;
+    }
+
+    main h1, main h2 {
+      font-weight: 700;
+      color: #e6b400;
+    }
+
+    /* Work subpage links */
+    .subpage-links a {
       display: block;
-      margin: 10px 0 5px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #ccc;
+      padding-left: 10px;
     }
-    form input, form textarea {
-      width: 100%;
-      max-width: 500px;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    form button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #007acc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    form button:hover {
-      background-color: #005fa3;
-    }
-    /* Styles for quick links inside Work */
-    .quick-links {
-      margin-bottom: 20px;
-      font-weight: bold;
-    }
-    .quick-links a {
-      color: #007acc;
-      text-decoration: none;
-      margin-right: 15px;
-    }
-    .quick-links a:hover {
+    .subpage-links a:hover {
+      color: #e6b400;
       text-decoration: underline;
+    }
+
+    /* Responsive - collapse nav on narrow screens */
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      nav h2 {
+        margin-right: 20px;
+      }
+      nav ul {
+        display: flex;
+      }
+      nav ul li {
+        margin-right: 20px;
+      }
+      nav ul li ul {
+        position: absolute;
+        background: #121212;
+        margin-top: 5px;
+        padding: 10px;
+        border-radius: 4px;
+        display: none;
+        white-space: normal;
+      }
+      nav ul li:hover ul {
+        display: block;
+      }
+      main {
+        margin-left: 0;
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
+<div class="container">
   <nav>
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#thoughts">Thoughts/Blogs</a>
-    <a href="#contact">Contact</a>
+    <h2>YASHIKA</h2>
+    <ul>
+      <li><a href="#home">Home (About)</a></li>
+      <li>
+        <a href="#work">Work ▾</a>
+        <ul class="subpage-links">
+          <li><a href="#project1">Project 1</a></li>
+          <li><a href="#project2">Project 2</a></li>
+          <li><a href="#project3">Project 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#ideas">Ideas</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
-</header>
 
-<main>
+  <main>
+    <section id="home">
+      <h1>About Me</h1>
+      <p>Welcome! Write your brief introduction here.</p>
+    </section>
 
-  <section id="about">
-    <h1>About Me</h1>
-    <p>Write a brief introduction about yourself here.</p>
-  </section>
+    <section id="work">
+      <h2>Work</h2>
+      <h3>Photos and Videos</h3>
+      <img src="images/project1.jpg" alt="Project 1" style="max-width:300px; border-radius:8px; margin-right: 15px;" />
+      <img src="images/project2.jpg" alt="Project 2" style="max-width:300px; border-radius:8px; margin-top: 15px;" />
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen style="margin-top:20px;"></iframe>
 
-  <section id="work">
-    <h2>My Work</h2>
+      <h3 id="project1" style="margin-top:40px;">Project 1</h3>
+      <p>Details and description about Project 1.</p>
+      
+      <h3 id="project2" style="margin-top:40px;">Project 2</h3>
+      <p>Details and description about Project 2.</p>
 
-    <h3>Photos and Videos</h3>
-    <img src="images/project1.jpg" alt="Project 1" />
-    <img src="images/project2.jpg" alt="Project 2" />
+      <h3 id="project3" style="margin-top:40px;">Project 3</h3>
+      <p>Details and description about Project 3.</p>
+    </section>
 
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+    <section id="ideas" style="margin-top: 60px;">
+      <h2>Ideas</h2>
+      <p>Share your creative ideas here.</p>
+    </section>
 
-    <h3>Individual Projects</h3>
+    <section id="blog" style="margin-top: 60px;">
+      <h2>Blog</h2>
+      <p>Write blog posts or link your external blog here.</p>
+    </section>
 
-    <div class="quick-links">
-      Jump to Project:
-      <a href="#project1">Project 1</a> |
-      <a href="#project2">Project 2</a>
-    </div>
+    <section id="contact" style="margin-top: 60px;">
+      <h2>Contact</h2>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name" required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none; margin-bottom:12px;" />
 
-    <!-- Project 1 Details -->
-    <div id="project1" style="margin-bottom: 40px;">
-      <h4>Project 1 Title</h4>
-      <p>Short description of Project 1.</p>
-      <img src="images/project1-detail.jpg" alt="Project 1 Detail" style="max-width: 400px;"/>
-      <p>Additional details, highlights, technologies used, challenges, outcomes, etc.</p>
-    </div>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your email" required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none; margin-bottom:12px;" />
 
-    <!-- Project 2 Details -->
-    <div id="project2" style="margin-bottom: 40px;">
-      <h4>Project 2 Title</h4>
-      <p>Short description of Project 2.</p>
-      <img src="images/project2-detail.jpg" alt="Project 2 Detail" style="max-width: 400px;"/>
-      <p>Additional project information here.</p>
-    </div>
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Write your message..." required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none;"></textarea>
 
-  </section>
-
-  <section id="thoughts">
-    <h2>Thoughts / Blogs</h2>
-    <p>This is the place where you can add your blogs or share your thoughts.</p>
-    <!-- You can manually add blog posts here as HTML or link to an external blog -->
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required />
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your email" required />
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
-
-      <button type="submit">Send</button>
-    </form>
-  </section>
-
-</main>
+        <button type="submit" style="margin-top:12px; padding: 10px 20px; background-color: #e6b400; color: #1e1e1e; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Send</button>
+      </form>
+    </section>
+  </main>
+</div>
 
 </body>
 </html>
