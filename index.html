@@ -2,154 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Yashika's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yashika — Portfolio</title>
+  <meta name="description" content="Yashika Sheth — work, ideas, notes, and contact." />
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #1e1e1e;
-      color: #f0f0f0;
-    }
-    a {
-      color: #e6b400;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+    /* ===== Base tokens (Khushi-like minimal) ===== */
+    :root{
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #555555;
+      --link: #0657C7;        /* readable blue */
+      --nav-w: 240px;
+      --content-w: 720px;
+      --gap: 24px;
     }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
+    *{ box-sizing: border-box; }
+    html,body{ margin:0; padding:0; }
+    body{
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+            Ubuntu, Cantarell, "Helvetica Neue", Arial, system-ui, sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
-    nav {
-      background-color: #121212;
-      width: 260px;
-      display: flex;
-      flex-direction: column;
-      padding: 40px 20px;
-      position: fixed;
-      height: 100vh;
-      overflow-y: auto;
+    a{ color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover{ text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+      outline: 2px solid var(--link); outline-offset: 2px;
     }
 
-    nav h2 {
-      margin: 0 0 30px 0;
-      font-weight: 700;
-      font-size: 2rem;
-      color: #e6b400;
-      letter-spacing: 2px;
+    .container{ display:flex; min-height:100vh; align-items:flex-start; }
+
+    /* ===== Left nav ===== */
+    nav{
+      position: sticky; top:0;
+      align-self: flex-start;
+      width: var(--nav-w);
+      max-height: 100vh;
+      padding: 28px 20px;
+      border-right: 1px solid #eee;
+    }
+    .brand{
+      font-weight: 700; letter-spacing: 0.5px; margin: 0 0 20px 0; font-size: 20px;
+    }
+    nav ul{ list-style: none; padding:0; margin:0; }
+    nav li{ margin: 10px 0; }
+    nav a{ text-decoration: none; color: var(--fg); }
+    nav a:hover{ text-decoration: underline; }
+    nav a[aria-current="page"]{ text-decoration: underline; }
+
+    /* Submenu for Work */
+    .submenu{ margin: 6px 0 0 14px; }
+    .submenu li{ margin: 6px 0; }
+    .submenu a{ color: var(--muted); }
+    .submenu a:hover{ color: var(--fg); }
+
+    /* ===== Main content ===== */
+    main{
+      flex:1; padding: 32px;
+      margin-left: 0;
+      display:flex; justify-content:center;
+    }
+    .content{ width: 100%; max-width: var(--content-w); }
+    h1,h2,h3{ line-height:1.25; margin: 0 0 12px 0; }
+    h1{ font-size: 28px; }
+    h2{ font-size: 22px; margin-top: 28px; }
+    h3{ font-size: 18px; margin-top: 20px; }
+    p{ margin: 10px 0 16px 0; color: var(--fg); }
+    .muted{ color: var(--muted); }
+
+    /* Images */
+    img{ max-width:100%; height:auto; border-radius: 8px; display:block; }
+
+    /* Responsive video (16:9) */
+    .video{
+      position: relative; width: 100%; max-width: 100%;
+      aspect-ratio: 16 / 9; margin: 12px 0 8px 0; border-radius: 8px; overflow: hidden;
+      background: #f6f6f6;
+    }
+    .video iframe{
+      position:absolute; inset:0; width:100%; height:100%; border:0;
     }
 
-    nav ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      flex-grow: 1;
-    }
+    /* Sections */
+    section{ padding: 8px 0; scroll-margin-top: 16px; }
 
-    nav ul li {
-      margin-bottom: 20px;
-    }
-
-    nav ul li a {
-      font-size: 1.1rem;
-      display: inline-block;
-      padding: 6px 0;
-    }
-
-    nav ul li ul {
-      margin-top: 6px;
-      margin-left: 12px;
-    }
-
-    nav ul li ul li {
-      margin-bottom: 12px;
-    }
-
-    main {
-      margin-left: 260px;
-      padding: 40px 60px;
-      flex-grow: 1;
-      max-width: 900px;
-    }
-
-    main h1, main h2 {
-      font-weight: 700;
-      color: #e6b400;
-    }
-
-    /* Work subpage links */
-    .subpage-links a {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      color: #ccc;
-      padding-left: 10px;
-    }
-    .subpage-links a:hover {
-      color: #e6b400;
-      text-decoration: underline;
-    }
-
-    /* Responsive - collapse nav on narrow screens */
-    @media (max-width: 768px) {
-      nav {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        padding: 20px;
-        overflow-x: auto;
-        white-space: nowrap;
+    /* ===== Mobile ===== */
+    @media (max-width: 860px){
+      .container{ flex-direction: column; }
+      nav{
+        position: relative; width: 100%; max-height: none; border-right: none; border-bottom:1px solid #eee;
+        display: flex; align-items: center; gap: 16px; padding: 14px 16px; overflow-x:auto;
       }
-      nav h2 {
-        margin-right: 20px;
-      }
-      nav ul {
-        display: flex;
-      }
-      nav ul li {
-        margin-right: 20px;
-      }
-      nav ul li ul {
-        position: absolute;
-        background: #121212;
-        margin-top: 5px;
-        padding: 10px;
-        border-radius: 4px;
-        display: none;
-        white-space: normal;
-      }
-      nav ul li:hover ul {
-        display: block;
-      }
-      main {
-        margin-left: 0;
-        padding: 20px;
-      }
+      nav ul{ display: flex; gap: 18px; }
+      .submenu{ display:none; } /* keep mobile clean; link to Work page/anchors instead */
+      main{ padding: 20px; }
     }
+
+    /* Better anchor snapping */
+    :target{ scroll-margin-top: 80px; }
   </style>
 </head>
 <body>
 
+<a href="#home" class="muted" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+  Skip to content
+</a>
+
 <div class="container">
-  <nav>
-    <h2>YASHIKA</h2>
+  <nav aria-label="Primary">
+    <div class="brand">YASHIKA</div>
     <ul>
-      <li><a href="#home">Home (About)</a></li>
+      <li><a href="#home" aria-current="page">Home (About)</a></li>
       <li>
-        <a href="#work">Work ▾</a>
-        <ul class="subpage-links">
+        <a href="#work">Work</a>
+        <ul class="submenu" aria-label="Work subpages">
           <li><a href="#project1">Project 1</a></li>
           <li><a href="#project2">Project 2</a></li>
           <li><a href="#project3">Project 3</a></li>
+          <!-- If you split projects into real subpages later, change href to /work/project-1.html, etc. -->
         </ul>
       </li>
       <li><a href="#ideas">Ideas</a></li>
@@ -158,56 +133,58 @@
     </ul>
   </nav>
 
-  <main>
-    <section id="home">
-      <h1>About Me</h1>
-      <p>Welcome! Write your brief introduction here.</p>
-    </section>
+  <main id="home">
+    <div class="content">
+      <section>
+        <h1>About</h1>
+        <p>One tight paragraph on what you do and what you’re looking for. Keep it specific.</p>
+      </section>
 
-    <section id="work">
-      <h2>Work</h2>
-      <h3>Photos and Videos</h3>
-      <img src="images/project1.jpg" alt="Project 1" style="max-width:300px; border-radius:8px; margin-right: 15px;" />
-      <img src="images/project2.jpg" alt="Project 2" style="max-width:300px; border-radius:8px; margin-top: 15px;" />
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen style="margin-top:20px;"></iframe>
+      <section id="work">
+        <h2>Work</h2>
+        <p class="muted">Selected projects. Click through or scroll.</p>
 
-      <h3 id="project1" style="margin-top:40px;">Project 1</h3>
-      <p>Details and description about Project 1.</p>
-      
-      <h3 id="project2" style="margin-top:40px;">Project 2</h3>
-      <p>Details and description about Project 2.</p>
+        <!-- Thumbnails -->
+        <img src="images/project1.jpg" alt="Project 1 thumbnail">
+        <img src="images/project2.jpg" alt="Project 2 thumbnail" style="margin-top:12px;">
 
-      <h3 id="project3" style="margin-top:40px;">Project 3</h3>
-      <p>Details and description about Project 3.</p>
-    </section>
+        <!-- Video demo (YouTube privacy-enhanced) -->
+        <div class="video" aria-label="Project video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_1"
+            title="Project 1 demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
 
-    <section id="ideas" style="margin-top: 60px;">
-      <h2>Ideas</h2>
-      <p>Share your creative ideas here.</p>
-    </section>
+        <h3 id="project1">Project 1</h3>
+        <p>Short, outcome‑focused description with a link to more details.</p>
 
-    <section id="blog" style="margin-top: 60px;">
-      <h2>Blog</h2>
-      <p>Write blog posts or link your external blog here.</p>
-    </section>
+        <h3 id="project2">Project 2</h3>
+        <p>What changed, who used it, numbers if you have them.</p>
 
-    <section id="contact" style="margin-top: 60px;">
-      <h2>Contact</h2>
-      <form>
-        <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Your name" required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none; margin-bottom:12px;" />
+        <h3 id="project3">Project 3</h3>
+        <p>Role, constraints, result.</p>
+      </section>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Your email" required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none; margin-bottom:12px;" />
+      <section id="ideas">
+        <h2>Ideas</h2>
+        <p>Notes, experiments, or a link to a separate ideas page.</p>
+      </section>
 
-        <label for="message">Message</label>
-        <textarea id="message" rows="6" placeholder="Write your message..." required style="padding:8px; width: 100%; max-width: 400px; border-radius: 4px; border:none;"></textarea>
+      <section id="blog">
+        <h2>Blog</h2>
+        <p>Link to your external blog or list recent posts.</p>
+      </section>
 
-        <button type="submit" style="margin-top:12px; padding: 10px 20px; background-color: #e6b400; color: #1e1e1e; border:none; border-radius:4px; font-weight:bold; cursor:pointer;">Send</button>
-      </form>
-    </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <!-- Keep forms off for now unless you wire up a backend; static “mailto:” is cleaner. -->
+      </section>
+    </div>
   </main>
 </div>
-
 </body>
 </html>
+
