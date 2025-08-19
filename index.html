@@ -1,11 +1,185 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Portfolio</title>
-    <meta charset="UTF-8">
-  </head>
-  <body>
-    <h1>Welcome to My Portfolio!</h1>
-    <p>This is my homepage.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yashika's Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin-right: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2, h3, h4 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    img {
+      max-width: 300px;
+      border-radius: 8px;
+      margin: 10px 10px 20px 0;
+      vertical-align: middle;
+    }
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: none;
+      display: block;
+    }
+    .project-links a {
+      display: inline-block;
+      margin-right: 15px;
+      color: #007acc;
+      text-decoration: none;
+    }
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    form input, form textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #005fa3;
+    }
+    /* Styles for quick links inside Work */
+    .quick-links {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .quick-links a {
+      color: #007acc;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+    .quick-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#thoughts">Thoughts/Blogs</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="about">
+    <h1>About Me</h1>
+    <p>Write a brief introduction about yourself here.</p>
+  </section>
+
+  <section id="work">
+    <h2>My Work</h2>
+
+    <h3>Photos and Videos</h3>
+    <img src="images/project1.jpg" alt="Project 1" />
+    <img src="images/project2.jpg" alt="Project 2" />
+
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+
+    <h3>Individual Projects</h3>
+
+    <div class="quick-links">
+      Jump to Project:
+      <a href="#project1">Project 1</a> |
+      <a href="#project2">Project 2</a>
+    </div>
+
+    <!-- Project 1 Details -->
+    <div id="project1" style="margin-bottom: 40px;">
+      <h4>Project 1 Title</h4>
+      <p>Short description of Project 1.</p>
+      <img src="images/project1-detail.jpg" alt="Project 1 Detail" style="max-width: 400px;"/>
+      <p>Additional details, highlights, technologies used, challenges, outcomes, etc.</p>
+    </div>
+
+    <!-- Project 2 Details -->
+    <div id="project2" style="margin-bottom: 40px;">
+      <h4>Project 2 Title</h4>
+      <p>Short description of Project 2.</p>
+      <img src="images/project2-detail.jpg" alt="Project 2 Detail" style="max-width: 400px;"/>
+      <p>Additional project information here.</p>
+    </div>
+
+  </section>
+
+  <section id="thoughts">
+    <h2>Thoughts / Blogs</h2>
+    <p>This is the place where you can add your blogs or share your thoughts.</p>
+    <!-- You can manually add blog posts here as HTML or link to an external blog -->
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+</main>
+
+</body>
 </html>
